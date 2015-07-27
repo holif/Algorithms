@@ -1,0 +1,91 @@
+#将字符串str="[南京,12.00,54],[句容西,12.23,30],[溧水,12.57,59],[溧阳,13.45,60]";解析成一下形式：
+南京,12.00,54
+句容西,12.23,30
+溧水,12.57,59
+溧阳,13.45,60
+
+CODE:
+public class jiexi1 {
+	
+	public void deal(String str){
+		int len=0,flg=-1,x=0,y=0;
+		String test=null;
+		while(len<str.length()){		
+			if(str.charAt(len)=='['){
+				flg=1;
+				x=len+1;
+			}
+			else if(str.charAt(len)==']'){
+				flg=0;
+				y=len;
+			}			
+			if(flg==0&&str.charAt(len)!=','){
+				test=str.substring(x, y);
+				System.out.println(test);
+			}
+			++len;
+		}
+	}
+	public static void main(String[] args) {
+		String str="[南京,12.00,54],[句容西,12.23,30],[溧水,12.57,59],[溧阳,13.45,60]";			
+		jiexi1 jx = new jiexi1();
+		jx.deal(str);		
+	}
+}
+#解析成一下形式
+南京	  12:00	 54	
+句容西	12:23	 30	
+溧水   	12:57	 59	
+溧阳  	13:45	 60	
+CODE:
+public class jiexi {
+
+	String [][]temp = {{"","",""},{"","",""},{"","",""},{"","",""},{"","",""},
+					           {"","",""},{"","",""},{"","",""},{"","",""},{"","",""},
+					           {"","",""}};
+					         
+	public void deal(String str){
+		int len=0,flg=-1,x=0,j=0,raw=0;
+		while(len<str.length()){		
+			if(str.charAt(len)=='['){
+				flg=1;
+				x=len+1;
+			}
+			else if(str.charAt(len)==']'){
+				flg=0;
+				temp[j][2]=str.substring(x, len);				
+				j++;
+			}			
+			if(flg==1&&str.charAt(len)==','){
+				if(raw==0){
+					temp[j][0]=str.substring(x, len);
+					raw=1;
+				}
+				else{
+					temp[j][1]=str.substring(x, len);
+					raw=0;
+				}
+				x=len+1;
+			}
+			++len;
+		}		
+	}
+	public String[][] getStr(){
+		return temp;
+	}
+	public static void main(String[] args) {
+		String str="[南京,12:00,54],[句容西,12:23,30],[溧水,12:57,59],[溧阳,13:45,60]";			
+		jiexi jx = new jiexi();
+		jx.deal(str);
+		String [][] t=jx.getStr();
+		for(String[] s1:t){
+			if(!s1[0].equals(""))
+			{
+				for(String s2:s1){
+					System.out.print(s2+"\t");
+				}
+				System.out.println();
+			}				
+		}
+	}
+}
