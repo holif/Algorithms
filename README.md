@@ -1,5 +1,5 @@
-# code
+#Algorithms
 
 #Codes of algorithm
 
-program code
+
