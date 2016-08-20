@@ -1,11 +1,11 @@
-#include <string>
+ï»¿#include <string>
 #include <iostream>
 using namespace std;
 
-const char *chnNumChar[10] = { "Áã", "Ò»", "¶ş", "Èı", "ËÄ", "Îå", "Áù", "Æß", "°Ë", "¾Å" };
-const char *chnUnitChar[] = { "", "Ê®", "°Ù", "Ç§" };
-//ÒÔÍòÎª½Ú »®·ÖµÄ½ÚÈ¨Î» 
-const char *chnUnitSection[] = { "", "Íò", "ÒÚ", "ÍòÒÚ" };
+const char *chnNumChar[10] = { "é›¶", "ä¸€", "äºŒ", "ä¸‰", "å››", "äº”", "å…­", "ä¸ƒ", "å…«", "ä¹" };
+const char *chnUnitChar[] = { "", "å", "ç™¾", "åƒ" };
+//ä»¥ä¸‡ä¸ºèŠ‚ åˆ’åˆ†çš„èŠ‚æƒä½ 
+const char *chnUnitSection[] = { "", "ä¸‡", "äº¿", "ä¸‡äº¿" };
 
 void SectionToChinese(unsigned int section, string& chnStr) {
 	chnStr.clear();
@@ -49,10 +49,10 @@ void NumberToChinese(unsigned int num, string& chnStr) {
 			chnStr.insert(0, chnNumChar[0]);
 		}
 		SectionToChinese(section, strIns);
-		/*ÊÇ·ñĞèÒª½ÚÈ¨Î»£¿*/
+		/*æ˜¯å¦éœ€è¦èŠ‚æƒä½ï¼Ÿ*/
 		strIns += (section != 0) ? chnUnitSection[unitPos] : chnUnitSection[0];
 		chnStr.insert(0, strIns);
-		/*ÈôÇ§Î»ÊÇ0 ÔòÔÚÏÂÒ»¸ösectionÊ±²¹Áã*/
+		/*è‹¥åƒä½æ˜¯0 åˆ™åœ¨ä¸‹ä¸€ä¸ªsectionæ—¶è¡¥é›¶*/
 		needZero = (section < 1000) && (section > 0);
 		
 		num /= 10000;
