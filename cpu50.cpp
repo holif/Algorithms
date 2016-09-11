@@ -1,5 +1,5 @@
-/*
-*��α�дһ��С������windows���������cpu��ռ������ʾΪ50%��
+﻿/*
+*如何编写一段小程序，让windows任务管理器cpu的占用率显示为50%？
 */
 #include<windows.h>
 void fun() {
